@@ -149,14 +149,14 @@ function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, ease: [0.22, 0.61, 0.36, 1] }}
         >
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-muted">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] bg-muted">
             <motion.img
               src={heroImage}
-              alt="Wnętrze poczekalni i gabinetu przychodni ARSMEDICA"
-              width={1408}
-              height={1760}
+              alt="Rejestracja przychodni ARSMEDICA CENTRUM z ladą i nazwą placówki na szklanej przegrodzie"
+              width={800}
+              height={449}
               style={{ y }}
-              className="size-full scale-110 object-cover"
+              className="size-full scale-110 object-cover object-[70%_center]"
             />
           </div>
           <motion.div
