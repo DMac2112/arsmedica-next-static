@@ -7,9 +7,7 @@ export function Footer() {
       <div className="container-page grid gap-12 py-16 md:grid-cols-3 lg:py-20">
         <div>
           <p className="font-serif text-3xl">{practice.name}</p>
-          <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-            {practice.subtitle}
-          </p>
+          <p className="mt-1 text-xs text-muted-foreground">{practice.subtitle}</p>
           <address className="mt-6 not-italic text-sm leading-relaxed text-muted-foreground">
             {practice.legalName}
             <br />
@@ -32,7 +30,10 @@ export function Footer() {
                 Kom. {practice.mobile}
               </a>
             </li>
-            <li className="text-muted-foreground">{practice.hours}</li>
+            <li className="text-muted-foreground">
+              POZ: {practice.hours}
+              <span className="hours-note">Godziny do potwierdzenia.</span>
+            </li>
             <li>
               <a
                 className="hover:text-primary"
@@ -40,13 +41,13 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Zamów receptę
+                E-recepta — strona przychodni
               </a>
             </li>
           </ul>
         </div>
 
-        <div className="grid grid-cols-2 gap-8">
+        <div className="footer-links-grid grid gap-8">
           <div>
             <p className="kicker">Serwis</p>
             <ul className="mt-5 space-y-2 text-sm">
@@ -80,7 +81,8 @@ export function Footer() {
       </div>
       <div className="border-t border-border/70">
         <div className="container-page py-6 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} ARSMEDICA, {practice.street}, {practice.city}.
+          Podgląd dla właściciela · © {new Date().getFullYear()} ARSMEDICA, {practice.street},{" "}
+          {practice.city}.
         </div>
       </div>
     </footer>

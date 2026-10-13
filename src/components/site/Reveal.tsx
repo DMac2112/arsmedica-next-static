@@ -16,7 +16,7 @@ export function Reveal({ children, delay = 0, y = 24, className, as = "div" }: R
   return (
     <MotionTag
       className={className}
-      initial={reduced ? false : { opacity: 0, y }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, delay, ease: [0.22, 0.61, 0.36, 1] }}
@@ -36,7 +36,7 @@ export function RevealWords({ text, className }: { text: string; className?: str
         <span key={`${word}-${i}`} className="inline-block overflow-hidden align-bottom">
           <motion.span
             className="inline-block"
-            initial={reduced ? false : { opacity: 0, y: "0.6em" }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.08 + i * 0.045, ease: [0.22, 0.61, 0.36, 1] }}
           >

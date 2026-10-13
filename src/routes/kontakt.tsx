@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/site/Reveal";
+import { Confirmation } from "@/components/site/PatientSections";
 import { mainRegistration, practice } from "@/content/arsmedica";
 
 export const Route = createFileRoute("/kontakt")({
@@ -49,8 +50,8 @@ function ContactPage() {
     <div>
       <PageHeader kicker="Kontakt" title={practice.legalName} />
 
-      <section className="container-page mt-16 grid gap-10 lg:grid-cols-2">
-        <Reveal className="rounded-3xl border border-border bg-surface p-10 md:p-12">
+      <section className="contact-details container-page mt-16 grid gap-10 lg:grid-cols-2">
+        <Reveal className="rounded-3xl border border-border bg-surface p-6 md:p-12">
           <dl className="space-y-8">
             <div>
               <dt className="kicker">Adres</dt>
@@ -73,15 +74,18 @@ function ContactPage() {
             </div>
             <div>
               <dt className="kicker">Godziny pracy przychodni</dt>
-              <dd className="mt-3 text-lg">{practice.hours}</dd>
+              <dd className="mt-3 text-lg">
+                {practice.hours}
+                <Confirmation>
+                  godziny POZ. Oferta POZ podaje 8:00–18:00, stopka źródła 7:30–18:00. Godziny
+                  rejestracji POZ nie są podane osobno.
+                </Confirmation>
+              </dd>
             </div>
             <div>
               <dt className="kicker">Rejestracja do gabinetów specjalistycznych</dt>
               <dd className="mt-3 text-lg">
-                <a
-                  className="hover:text-primary"
-                  href={`tel:${mainRegistration.phoneHref}`}
-                >
+                <a className="hover:text-primary" href={`tel:${mainRegistration.phoneHref}`}>
                   {mainRegistration.phone}
                 </a>
                 <span className="block text-sm text-muted-foreground">
@@ -92,14 +96,19 @@ function ContactPage() {
           </dl>
         </Reveal>
 
-        <Reveal delay={0.1} className="overflow-hidden rounded-3xl border border-border bg-sand">
-          <iframe
-            title="Mapa — ARSMEDICA, ul. Babina 3, Kalisz"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=18.078%2C51.755%2C18.100%2C51.770&layer=mapnik&marker=51.7625%2C18.0885"
-            className="h-[420px] w-full lg:h-full"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+        <Reveal delay={0.1} className="rounded-3xl bg-accent p-6 md:p-12">
+          <h2 className="text-3xl">Dojazd do przychodni</h2>
+          <p className="mt-6">ARSMEDICA CENTRUM, ul. Babina 3, 62-800 Kalisz.</p>
+          <a
+            className="text-link mt-4"
+            href="https://www.openstreetmap.org/search?query=Babina%203%2C%20Kalisz"
+          >
+            Znajdź adres na mapie
+          </a>
+          <Confirmation>
+            informacje o wejściu, parkingu i dostępności budynku. Źródła nie opisują szczegółów
+            dojazdu.
+          </Confirmation>
         </Reveal>
       </section>
     </div>

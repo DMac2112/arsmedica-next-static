@@ -1,4 +1,4 @@
-// Wszystkie treści pochodzą z serwisu e-arsmedica.pl (stan: sierpień 2026).
+// Źródła: arsmedica-nfz/audit/pages/*.md oraz audit/AUDIT.md.
 // Nie dodawać informacji, których nie ma w źródle.
 
 export const practice = {
@@ -22,9 +22,20 @@ export const nav = [
   { label: "Kontakt", to: "/kontakt" },
 ] as const;
 
+export const patientTasks = [
+  { label: "Godziny", hash: "godziny" },
+  { label: "Lekarze", hash: "lekarze" },
+  { label: "Laboratorium", hash: "laboratorium" },
+  { label: "Szczepienia", hash: "szczepienia" },
+  { label: "Informacje i kontakt", hash: "informacje" },
+] as const;
+
 export const externalLinks = [
   { label: "RODO", href: "https://e-arsmedica.pl/rodo" },
-  { label: "Kalendarz szczepień 2026", href: "https://e-arsmedica.pl/kalendarz-szczepien" },
+  {
+    label: "Kalendarz szczepień — do potwierdzenia",
+    href: "https://e-arsmedica.pl/kalendarz-szczepien",
+  },
   {
     label: "Prawa i obowiązki pacjenta",
     href: "https://e-arsmedica.pl/prawa-i-obowiazki-pacjenta",
@@ -159,7 +170,7 @@ export const pozFacts = [
       "Opiekę medyczną świadczy Wojewódzki Szpital Zespolony w Kaliszu, ul. Poznańska 79 (budynek Pogotowia).",
   },
   { label: "Gabinet zabiegowy", value: "Czynny w godzinach pracy przychodni." },
-  { label: "Pobieranie krwi", value: "Codziennie od 7:30 do 11.00." },
+  { label: "Pobieranie krwi", value: "Od poniedziałku do piątku, 7:30–11:00." },
 ];
 
 export const mainRegistration = {
@@ -205,12 +216,15 @@ export const specialists = [
     name: "dr n. med. Jarosław Kasperczak",
     schedule: "przyjęcia poniedziałek i czwartek od godz. 16:00",
     phone: "607 051 894",
+    confirmation: "Dni przyjęć do potwierdzenia: strona „O nas” podaje poniedziałek i piątek.",
   },
   {
     field: "Masażystka",
     name: "Gohar Meliksetyan",
     schedule: "zabiegi od poniedziałku do piątku od godz. 12:00",
     phone: "880 683 065",
+    confirmation:
+      "Telefon i godziny do potwierdzenia: strona „O nas” podaje inny numer rejestracji.",
   },
   {
     field: "Poradnia Psychologii Pracy",
@@ -219,7 +233,13 @@ export const specialists = [
     phone: "503 114 595",
   },
   { field: "Psycholog", name: "mgr Justyna Prus-Buczak", schedule: "", phone: "601 775 701" },
-  { field: "Dietetyk", name: "Wiktoria Szczęsna", schedule: "", phone: "722 398 007" },
+  {
+    field: "Dietetyk",
+    name: "Wiktoria Szczęsna",
+    schedule: "",
+    phone: "791 755 792",
+    confirmation: "Nazwisko do potwierdzenia: strona „O nas” podaje Julię Dobosz.",
+  },
   {
     field: "Pulmonolog",
     name: "lek. Waldemar Bakalarz",

@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Phone } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/site/Reveal";
+import { Confirmation } from "@/components/site/PatientSections";
+import { dataNotices } from "@/content/notices";
 import {
   ePrescription,
   medicalStore,
@@ -36,6 +38,24 @@ function InfoPage() {
   return (
     <div>
       <PageHeader kicker="Dla pacjenta" title="Informacje" />
+
+      <section
+        id="dokumenty"
+        className="container-page patient-section"
+        aria-labelledby="dokumenty-title"
+      >
+        <h2 id="dokumenty-title">Dokumenty i sprawy pacjenta</h2>
+        <div className="patient-links">
+          <a href="https://e-arsmedica.pl/prawa-i-obowiazki-pacjenta">
+            Prawa i obowiązki pacjenta — strona przychodni
+          </a>
+          <a href="https://e-arsmedica.pl/rodo">Ochrona danych (RODO) — strona przychodni</a>
+        </div>
+        <Confirmation>
+          aktualność dokumentów, procedura skarg, regulamin organizacyjny i pełne zasady
+          udostępniania dokumentacji. W źródłach brakuje tych informacji.
+        </Confirmation>
+      </section>
 
       <section className="container-page mt-20" aria-labelledby="profilaktyka">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,26rem)_1fr]">
@@ -90,19 +110,26 @@ function InfoPage() {
               ))}
             </div>
           </Reveal>
-          <Reveal delay={0.08} className="bg-surface p-10 md:p-14">
-            <p className="kicker">E-recepta</p>
-            <h2 className="mt-4 text-3xl md:text-4xl">{ePrescription.title}</h2>
-            <p className="mt-6 leading-relaxed text-muted-foreground">{ePrescription.body}</p>
-            <p className="mt-4 leading-relaxed">{ePrescription.note}</p>
-            <a
-              href={prescriptionUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-8 inline-flex min-h-12 items-center rounded-full bg-primary px-6 font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
-            >
-              Przejdź do formularza
-            </a>
+          <Reveal delay={0.08} className="bg-surface p-6 md:p-14">
+            <div id="e-recepta">
+              <p className="kicker">E-recepta</p>
+              <h2 className="mt-4 text-3xl md:text-4xl">{ePrescription.title}</h2>
+              <p className="mt-6 leading-relaxed text-muted-foreground">
+                E-recepta jest przeznaczona dla pacjentów przyjmujących leki na choroby przewlekłe.
+                Dotychczasowa strona przychodni udostępnia zamawianie recept.
+              </p>
+              <p className="mt-4 leading-relaxed">
+                To podgląd — nie przyjmuje zamówień recept ani danych pacjenta.
+              </p>
+              <a
+                href={prescriptionUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-8 inline-flex min-h-12 items-center rounded-xl bg-primary px-6 font-medium text-primary-foreground"
+              >
+                Otwórz stronę przychodni
+              </a>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -123,13 +150,44 @@ function InfoPage() {
             >
               <h3 className="font-serif text-2xl leading-snug">{item.title}</h3>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
-              <p className="mt-auto flex items-center gap-2 pt-6 font-medium">
+              <div className="mt-auto pt-6 font-medium">
                 <Phone className="size-4 text-primary" aria-hidden />
-                {item.phone}
-              </p>
+                {item.phone.split(";").map((phone) => (
+                  <a
+                    key={phone}
+                    className="text-link"
+                    href={`tel:+48${phone.replace(/[^0-9]/g, "")}`}
+                  >
+                    {phone.trim()}
+                  </a>
+                ))}
+                {item.title.includes("TPK") && (
+                  <Confirmation>aktualność usługi i numeru z archiwalnej strony.</Confirmation>
+                )}
+              </div>
             </Reveal>
           ))}
         </ul>
+      </section>
+
+      <section
+        id="komunikaty"
+        className="container-page patient-section"
+        aria-labelledby="komunikaty-title"
+      >
+        <h2 id="komunikaty-title">Komunikaty o ochronie danych</h2>
+        <p className="section-lead">
+          Treść komunikatów opublikowanych na stronie przychodni, zachowana bez zmian. Rozwiń
+          wybrany komunikat.
+        </p>
+        {dataNotices.map((notice) => (
+          <details className="data-notice" key={notice.title}>
+            <summary>{notice.title}</summary>
+            <div className="notice-copy">
+              {notice.body.replace(/^#{1,6}\s+/gm, "").replace(/\n(?:[ \t]*\n)+/g, "\n\n")}
+            </div>
+          </details>
+        ))}
       </section>
     </div>
   );

@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Phone } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/site/Reveal";
+import { Confirmation } from "@/components/site/PatientSections";
 import { mainRegistration, specialists } from "@/content/arsmedica";
 
 export const Route = createFileRoute("/specjalisci")({
@@ -44,7 +45,7 @@ function SpecialistsPage() {
           </p>
           <a
             href={`tel:${mainRegistration.phoneHref}`}
-            className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-full bg-primary px-6 text-base font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
+            className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-xl bg-primary px-6 text-base font-medium text-primary-foreground"
           >
             <Phone className="size-4" aria-hidden />
             {mainRegistration.phone}
@@ -59,16 +60,20 @@ function SpecialistsPage() {
               key={`${s.field}-${s.name}`}
               as="li"
               delay={(i % 3) * 0.06}
-              className="group flex flex-col rounded-2xl border border-border bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-lift"
+              className="flex flex-col rounded-2xl border border-border bg-surface p-7"
             >
-              <p className="text-xs uppercase tracking-[0.16em] text-primary">{s.field}</p>
+              <p className="text-lg text-primary">{s.field}</p>
               <h2 className="mt-3 font-serif text-2xl leading-snug">{s.name}</h2>
               {s.schedule ? (
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.schedule}</p>
               ) : null}
+              {s.confirmation ? <Confirmation>{s.confirmation}</Confirmation> : null}
+              {!s.schedule ? (
+                <p className="hours-note mt-3">Godziny przyjęć do potwierdzenia w rejestracji.</p>
+              ) : null}
               <a
                 href={`tel:+48${s.phone.replace(/\s/g, "")}`}
-                className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium transition-colors group-hover:text-primary"
+                className="mt-auto inline-flex min-h-12 items-center gap-2 py-3 text-sm font-medium text-primary"
               >
                 <Phone className="size-3.5" aria-hidden />
                 rej. {s.phone}

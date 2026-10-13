@@ -4,10 +4,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
+/* Existing spacious layout and serif headings; ARSMEDICA red from nfz/v1/styles.css. */
+
+@theme inline block maps CSS custom properties to Tailwind utility
  * classes (e.g. --color-primary -> bg-primary, text-primary).
  *
  * The :root and .dark blocks define the actual color values using oklch.
@@ -26,8 +25,11 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
-  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Newsreader", ui-serif, Georgia, serif;
+  --font-sans: Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-serif: Georgia, "Times New Roman", ui-serif, serif;
+  --text-xs: 1rem;
+  --text-sm: 1.125rem;
+  --text-base: 1.125rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -64,47 +66,36 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --shadow-soft: 0 1px 2px oklch(0.25 0.03 150 / 0.04), 0 12px 40px -18px oklch(0.25 0.03 150 / 0.18);
-  --shadow-lift: 0 2px 6px oklch(0.25 0.03 150 / 0.06), 0 28px 60px -28px oklch(0.25 0.03 150 / 0.28);
+  --shadow-soft:
+    0 1px 2px oklch(0.25 0.03 150 / 0.04), 0 12px 40px -18px oklch(0.25 0.03 150 / 0.18);
+  --shadow-lift:
+    0 2px 6px oklch(0.25 0.03 150 / 0.06), 0 28px 60px -28px oklch(0.25 0.03 150 / 0.28);
 }
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.982 0.006 95);
-  --foreground: oklch(0.235 0.017 160);
-  --ink: oklch(0.235 0.017 160);
-  --surface: oklch(0.995 0.003 95);
-  --sand: oklch(0.945 0.012 95);
-  --card: oklch(0.995 0.003 95);
-  --card-foreground: oklch(0.235 0.017 160);
-  --popover: oklch(0.995 0.003 95);
-  --popover-foreground: oklch(0.235 0.017 160);
-  --primary: oklch(0.44 0.062 165);
-  --primary-foreground: oklch(0.985 0.005 95);
-  --secondary: oklch(0.945 0.012 95);
-  --secondary-foreground: oklch(0.28 0.02 160);
-  --muted: oklch(0.945 0.012 95);
-  --muted-foreground: oklch(0.505 0.018 155);
-  --accent: oklch(0.92 0.026 160);
-  --accent-foreground: oklch(0.32 0.04 165);
-  --destructive: oklch(0.55 0.18 27);
-  --destructive-foreground: oklch(0.985 0.005 95);
-  --border: oklch(0.895 0.012 120);
-  --input: oklch(0.895 0.012 120);
-  --ring: oklch(0.44 0.062 165);
-  --chart-1: oklch(0.44 0.062 165);
-  --chart-2: oklch(0.6 0.05 160);
-  --chart-3: oklch(0.72 0.04 120);
-  --chart-4: oklch(0.8 0.05 95);
-  --chart-5: oklch(0.35 0.04 170);
-  --sidebar: oklch(0.982 0.006 95);
-  --sidebar-foreground: oklch(0.235 0.017 160);
-  --sidebar-primary: oklch(0.44 0.062 165);
-  --sidebar-primary-foreground: oklch(0.985 0.005 95);
-  --sidebar-accent: oklch(0.945 0.012 95);
-  --sidebar-accent-foreground: oklch(0.28 0.02 160);
-  --sidebar-border: oklch(0.895 0.012 120);
-  --sidebar-ring: oklch(0.44 0.062 165);
+  --background: #ffffff;
+  --foreground: #242c29;
+  --ink: #242c29;
+  --surface: #ffffff;
+  --sand: #f3f5f4;
+  --card: #ffffff;
+  --card-foreground: #242c29;
+  --popover: #ffffff;
+  --popover-foreground: #242c29;
+  --primary: #b3141f;
+  --primary-foreground: #ffffff;
+  --secondary: #edf3ef;
+  --secondary-foreground: #385e4a;
+  --muted: #f3f5f4;
+  --muted-foreground: #526259;
+  --accent: #edf3ef;
+  --accent-foreground: #385e4a;
+  --destructive: #b3141f;
+  --destructive-foreground: #ffffff;
+  --border: #d4ded7;
+  --input: #d4ded7;
+  --ring: #b3141f;
 }
 
 @layer base {
@@ -121,7 +112,8 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "cv11", "ss01";
+    font-size: 18px;
+    line-height: 1.6;
   }
 
   h1,
@@ -141,9 +133,9 @@
 }
 
 @utility kicker {
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--color-muted-foreground);
   font-weight: 500;
 }
@@ -152,4 +144,467 @@
   html {
     scroll-behavior: auto;
   }
+}
+
+/* Patient tasks stay visible at the top without opening a mobile menu. */
+.site-header {
+  background: var(--surface);
+  border-top: 5px solid var(--primary);
+}
+.header-brand-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 72px;
+}
+.brand-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 48px;
+  line-height: 1.2;
+}
+.brand-location {
+  font-size: 16px;
+  color: var(--muted-foreground);
+}
+.header-call {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  color: var(--primary);
+  font-weight: 600;
+}
+.task-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  padding-bottom: 12px;
+}
+.task-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 8px 6px;
+  border-radius: 8px;
+  background: var(--sand);
+  font-size: 18px;
+  color: var(--foreground);
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.3;
+}
+.task-nav a:first-child {
+  background: var(--primary);
+  color: white;
+}
+.task-nav a:last-child {
+  grid-column: 1 / -1;
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+.task-nav a:hover {
+  box-shadow: inset 0 -3px currentColor;
+}
+.patient-hero {
+  background: var(--sand);
+  padding-block: 22px 26px;
+}
+.hero-layout {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+.patient-hero h1 {
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  line-height: 1.15;
+}
+.today-hours {
+  margin-block: 14px;
+}
+.today-hours > p:first-child {
+  font-size: 18px;
+}
+.today-value {
+  font-size: 24px;
+  line-height: 1.5;
+  color: var(--primary);
+}
+.today-value strong {
+  font-size: 30px;
+  font-weight: 600;
+}
+.hours-note {
+  display: block;
+  color: var(--muted-foreground);
+  font-size: 16px;
+  line-height: 1.4;
+}
+.registration-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 76px;
+  padding: 10px 24px;
+  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+}
+.call-label {
+  display: block;
+  font-size: 16px;
+}
+.registration-call strong {
+  display: block;
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.hero-address {
+  margin-top: 14px;
+  font-size: 18px;
+}
+.hero-photo {
+  display: none;
+}
+.hero-photo img,
+.about-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
+}
+.hero-photo figcaption {
+  margin-top: 10px;
+  color: var(--muted-foreground);
+  font-size: 16px;
+}
+.patient-section {
+  padding-block: 48px;
+  scroll-margin-top: 24px;
+}
+.patient-section h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 28px;
+}
+.patient-section h3 {
+  font-size: 25px;
+  line-height: 1.3;
+  margin-block: 24px 12px;
+}
+.patient-section h3:first-child {
+  margin-top: 0;
+}
+.patient-section p,
+.patient-section li {
+  max-width: 70ch;
+}
+.section-lead {
+  margin-bottom: 24px;
+  font-size: 20px;
+}
+.hours-layout,
+.service-layout {
+  display: grid;
+  gap: 32px;
+}
+.opening-hours > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.opening-hours > div:first-child {
+  padding-top: 0;
+}
+.opening-hours dd strong {
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+.opening-hours dd a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  font-weight: 600;
+  color: var(--primary);
+}
+.support-panel {
+  background: var(--accent);
+  border-radius: 16px;
+  padding: 24px;
+}
+.support-panel h3 {
+  color: var(--accent-foreground);
+}
+.support-panel > p + p {
+  margin-top: 20px;
+}
+.confirmation {
+  margin-block: 16px;
+  padding-left: 12px;
+  border-left: 1px solid var(--primary);
+  font-size: 16px;
+  line-height: 1.55;
+  color: #5f3b3d;
+}
+.confirmation strong {
+  font-weight: 600;
+}
+.text-link {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  width: fit-content;
+  max-width: 100%;
+  padding-block: 8px;
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.doctor-schedules {
+  border-top: 1px solid var(--border);
+}
+.doctor-schedule {
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+.doctor-schedule summary {
+  padding: 12px 4px;
+  min-height: 48px;
+  cursor: pointer;
+}
+.doctor-schedule summary > span {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 32px);
+}
+.doctor-name {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 25px;
+  line-height: 1.3;
+}
+.doctor-role {
+  display: block;
+  color: var(--muted-foreground);
+  font-size: 18px;
+  margin-top: 4px;
+}
+.doctor-schedule[open] {
+  background: var(--sand);
+  padding-inline: 16px;
+  border-radius: 12px;
+}
+.doctor-schedule dl {
+  margin-block: 12px;
+}
+.doctor-schedule dl > div {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 12px;
+  padding-block: 12px;
+  border-top: 1px solid var(--border);
+}
+.doctor-schedule dd {
+  font-weight: 600;
+}
+.staff-support {
+  display: grid;
+  gap: 28px;
+  margin-top: 32px;
+}
+.section-green {
+  background: var(--accent);
+}
+.section-green .support-panel {
+  background: white;
+}
+.section-soft {
+  background: var(--sand);
+}
+.service-time {
+  margin-bottom: 24px;
+  color: var(--accent-foreground);
+}
+.service-time strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 42px;
+  line-height: 1.3;
+  font-weight: 400;
+}
+.service-time span {
+  display: block;
+}
+.vaccine-list {
+  list-style: none;
+  padding: 0;
+}
+.vaccine-list li {
+  padding-block: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.vaccine-list strong,
+.vaccine-list span {
+  display: block;
+}
+.vaccine-list span {
+  color: var(--muted-foreground);
+}
+.patient-links > a {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.about-clinic {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+.about-photo {
+  margin-top: 8px;
+}
+a,
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+main:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
+}
+a,
+button {
+  overflow-wrap: anywhere;
+}
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  z-index: 100;
+  transform: translateY(-150%);
+  padding: 12px 20px;
+  background: white;
+  color: var(--primary);
+}
+.skip-link:focus {
+  transform: none;
+}
+footer a,
+.contact-details a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+}
+footer .footer-links-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .header-call {
+    display: inline-flex;
+  }
+  .task-nav {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .task-nav a:last-child {
+    grid-column: auto;
+  }
+  .staff-support {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .patient-hero {
+    padding-block: 40px;
+  }
+  footer .footer-links-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 900px) {
+  .hero-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  .hero-photo {
+    display: block;
+  }
+  .patient-hero {
+    padding-block: 48px;
+  }
+  .today-value strong {
+    font-size: 38px;
+  }
+  .hours-layout {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 64px;
+  }
+  .service-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .patient-section {
+    padding-block: 72px;
+  }
+  .about-clinic {
+    grid-template-columns: 1fr 1fr;
+  }
+  .about-photo {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.data-notice {
+  border-block: 1px solid var(--border);
+  margin-top: 16px;
+}
+.data-notice summary {
+  cursor: pointer;
+  min-height: 56px;
+  padding-block: 16px;
+  color: var(--primary);
+}
+.notice-copy {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  max-width: 70ch;
+  padding-block: 20px;
+}
+::selection {
+  background: #f7dadd;
+  color: var(--foreground);
+}
+.opening-hours,
+.doctor-schedule dl {
+  font-variant-numeric: tabular-nums;
+}
+#e-recepta,
+#dokumenty,
+#komunikaty {
+  scroll-margin-top: 24px;
 }

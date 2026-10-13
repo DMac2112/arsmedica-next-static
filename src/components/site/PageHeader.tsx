@@ -10,10 +10,9 @@ export function PageHeader({
   lead?: string;
 }) {
   return (
-    <header className="border-b border-border bg-sand pb-16 pt-36 md:pb-24 md:pt-44">
+    <header className="border-b border-border bg-sand py-10 md:py-16">
       <div className="container-page">
-        <p className="kicker">{kicker}</p>
-        <h1 className="mt-5 max-w-4xl text-5xl leading-[1.02] md:text-7xl">
+        <h1 className="max-w-4xl text-4xl leading-[1.12] md:text-6xl">
           <RevealWords text={title} />
         </h1>
         {lead ? (
