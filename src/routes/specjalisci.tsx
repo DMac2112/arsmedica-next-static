@@ -63,7 +63,7 @@ function SpecialistsPage() {
               className="flex flex-col rounded-2xl border border-border bg-surface p-7"
             >
               <p className="text-lg text-primary">{s.field}</p>
-              <h2 className="mt-3 font-serif text-2xl leading-snug">{s.name}</h2>
+              <h2 className="mt-3 font-sans text-2xl leading-snug">{s.name}</h2>
               {s.schedule ? (
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.schedule}</p>
               ) : null}

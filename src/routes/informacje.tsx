@@ -87,7 +87,7 @@ function InfoPage() {
               ))}
             </div>
             <Reveal delay={0.1}>
-              <p className="mt-8 border-l-2 border-primary pl-6 font-serif text-2xl leading-snug">
+              <p className="mt-8 border-l-2 border-primary pl-6 font-sans text-2xl leading-snug">
                 {prevention.closing}
               </p>
             </Reveal>
@@ -148,7 +148,7 @@ function InfoPage() {
               delay={i * 0.07}
               className="flex flex-col rounded-2xl border border-border bg-surface p-8"
             >
-              <h3 className="font-serif text-2xl leading-snug">{item.title}</h3>
+              <h3 className="font-sans text-2xl leading-snug">{item.title}</h3>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
               <div className="mt-auto pt-6 font-medium">
                 <Phone className="size-4 text-primary" aria-hidden />

@@ -62,7 +62,6 @@ function Home() {
         <div className="container-page hero-layout">
           <div>
             <h1>Godziny i kontakt</h1>
-            <Today />
             <a href={`tel:${practice.phoneHref}`} className="registration-call">
               <Phone size={24} aria-hidden="true" />
               <span>
@@ -70,6 +69,7 @@ function Home() {
                 <strong>{practice.phone}</strong>
               </span>
             </a>
+            <Today />
             <p className="hero-address">ARSMEDICA CENTRUM · ul. Babina 3, Kalisz</p>
           </div>
           <figure className="hero-photo">

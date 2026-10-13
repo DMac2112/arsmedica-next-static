@@ -55,7 +55,7 @@ function ContactPage() {
           <dl className="space-y-8">
             <div>
               <dt className="kicker">Adres</dt>
-              <dd className="mt-3 font-serif text-3xl leading-snug">
+              <dd className="mt-3 font-sans text-3xl leading-snug">
                 {practice.street}
                 <br />
                 {practice.city}
