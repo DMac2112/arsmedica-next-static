@@ -45,10 +45,11 @@ export function OpeningHours() {
           </dd>
         </div>
         <div>
-          <dt>Rejestracja specjalistów</dt>
+          <dt>Rejestracja centralna — wybrani specjaliści</dt>
           <dd>
             pn–pt <strong>8:00–16:00</strong>
             <a href={`tel:${mainRegistration.phoneHref}`}>{mainRegistration.phone}</a>
+            <span className="hours-note">{mainRegistration.scope}</span>
           </dd>
         </div>
       </dl>
@@ -66,6 +67,15 @@ export function OpeningHours() {
         <a className="text-link" href="tel:+48627651654">
           62 765 16 54
         </a>
+        <h3>Teleplatforma Pierwszego Kontaktu (TPK)</h3>
+        <p>
+          Według strony przychodni: pn–pt 18:00–8:00, w weekendy, święta i inne dni ustawowo wolne
+          od pracy całodobowo. Numer bezpłatny.
+        </p>
+        <a className="text-link" href="tel:+48800137200">
+          800 137 200
+        </a>
+        <Confirmation>aktualność usługi TPK i numeru z archiwalnej strony.</Confirmation>
       </div>
     </div>
   );
@@ -146,6 +156,16 @@ export function LaboratoryInfo() {
         <Confirmation>
           dni i sposób odbioru wyników, w tym dostęp przez internet. Źródło nie podaje tych zasad.
         </Confirmation>
+        <h3>Sprzęt diagnostyczny w przychodni</h3>
+        <p>
+          Opis zrealizowanego projektu grantowego wymienia spirometr, aparat EKG, rejestratory
+          Holter EKG i Holter ciśnieniowy, aparat ultrasonograficzny oraz mobilne aparaty USG i
+          urządzenia do szybkiej diagnostyki laboratoryjnej.
+        </p>
+        <Confirmation>
+          dostępność konkretnych badań, skierowanie, finansowanie i terminy. Opis wyposażenia nie
+          podaje zasad zapisów.
+        </Confirmation>
       </div>
       <div className="support-panel">
         <h3>Jak przygotować się do badania?</h3>
@@ -210,6 +230,10 @@ export function VaccinationInfo() {
         <p>
           Strona przychodni informuje także o szczepieniach przeciw krztuścowi. O szczepienia dla
           dzieci i dorosłych zapytaj w punkcie szczepień.
+        </p>
+        <p>
+          Według strony przychodni dorosłym zaleca się dawkę przypominającą co 10 lat dla utrzymania
+          odporności.
         </p>
       </div>
     </div>

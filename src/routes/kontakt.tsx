@@ -83,7 +83,7 @@ function ContactPage() {
               </dd>
             </div>
             <div>
-              <dt className="kicker">Rejestracja do gabinetów specjalistycznych</dt>
+              <dt className="kicker">Rejestracja centralna — wybrani specjaliści</dt>
               <dd className="mt-3 text-lg">
                 <a className="hover:text-primary" href={`tel:${mainRegistration.phoneHref}`}>
                   {mainRegistration.phone}
@@ -91,6 +91,7 @@ function ContactPage() {
                 <span className="block text-sm text-muted-foreground">
                   {mainRegistration.hours}
                 </span>
+                <p className="mt-3 text-lg leading-relaxed">{mainRegistration.scope}</p>
               </dd>
             </div>
           </dl>

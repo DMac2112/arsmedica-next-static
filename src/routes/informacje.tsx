@@ -115,9 +115,16 @@ function InfoPage() {
               <p className="kicker">E-recepta</p>
               <h2 className="mt-4 text-3xl md:text-4xl">{ePrescription.title}</h2>
               <p className="mt-6 leading-relaxed text-muted-foreground">
-                E-recepta jest przeznaczona dla pacjentów przyjmujących leki na choroby przewlekłe.
-                Dotychczasowa strona przychodni udostępnia zamawianie recept.
+                Pacjenci ARSMEDICA przyjmujący leki na choroby przewlekłe mogą zamówić receptę na
+                leki już przepisane przez lekarza, bez wizyty w przychodni. Kod otrzymany SMS-em
+                pozwala zrealizować e-receptę w dowolnej aptece.
               </p>
+              <h3 className="mt-6 text-2xl">Warunki zamówienia</h3>
+              <ul className="mt-4 list-disc space-y-4 pl-6 text-lg leading-relaxed">
+                {ePrescription.requirements.map((requirement) => (
+                  <li key={requirement}>{requirement}</li>
+                ))}
+              </ul>
               <p className="mt-4 leading-relaxed">
                 To podgląd — nie przyjmuje zamówień recept ani danych pacjenta.
               </p>
@@ -127,7 +134,7 @@ function InfoPage() {
                 rel="noreferrer"
                 className="mt-8 inline-flex min-h-12 items-center rounded-xl bg-primary px-6 font-medium text-primary-foreground"
               >
-                Otwórz stronę przychodni
+                Otwórz formularz e-recepty przychodni
               </a>
             </div>
           </Reveal>

@@ -40,9 +40,10 @@ function SpecialistsPage() {
         <Reveal className="rounded-2xl border border-primary/20 bg-accent p-8 md:p-10">
           <p className="kicker">Rejestracja</p>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed">
-            Rejestracja do lekarzy przyjmujących w ramach prywatnych gabinetów specjalistycznych{" "}
+            Rejestracja centralna pod numerem {mainRegistration.phone} działa{" "}
             {mainRegistration.hours}.
           </p>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed">{mainRegistration.scope}</p>
           <a
             href={`tel:${mainRegistration.phoneHref}`}
             className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-xl bg-primary px-6 text-base font-medium text-primary-foreground"

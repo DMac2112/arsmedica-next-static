@@ -59,7 +59,10 @@ function PricingPage() {
             <tbody className="divide-y divide-border/70">
               {priceList.map((row) => (
                 <tr key={row.name} className="transition-colors hover:bg-sand/60">
-                  <td className="break-words px-3 py-4 text-lg leading-relaxed">{row.name}</td>
+                  <td className="break-words px-3 py-4 text-lg leading-relaxed">
+                    {row.name}
+                    {row.confirmation ? <Confirmation>{row.confirmation}</Confirmation> : null}
+                  </td>
                   <td className="px-3 py-4 text-right font-medium tabular-nums">{row.price}</td>
                 </tr>
               ))}

@@ -177,6 +177,8 @@ export const mainRegistration = {
   phone: "500 308 305",
   phoneHref: "+48500308305",
   hours: "od poniedziałku do piątku w godz. 8:00 do 16:00",
+  scope:
+    "Ortopeda, neurolog, kardiolog, medycyna pracy i transportu oraz pulmonolog. Pozostali specjaliści mają osobne numery podane na liście specjalistów; źródło nie podaje godzin ich rejestracji.",
 };
 
 export const specialists = [
@@ -309,7 +311,7 @@ export const priceIntro = [
   "Usługi nieobjęte ubezpieczeniem zdrowotnym oraz świadczenia pozostałych poradni są płatne zgodnie z cennikiem obowiązującym w naszej placówce medycznej.",
 ];
 
-export const priceList: { name: string; price: string }[] = [
+export const priceList: { name: string; price: string; confirmation?: string }[] = [
   {
     name: "Porada lekarska udzielona pacjentowi nie zapisanemu do Przychodni, u którego nie występuje zagrożenie zdrowia lub życia",
     price: "200,00 zł",
@@ -329,7 +331,12 @@ export const priceList: { name: string; price: string }[] = [
   { name: "Iniekcja dożylna", price: "30,00 zł" },
   { name: "Zmiana opatrunku, zdjęcie szwów", price: "30,00 zł" },
   { name: "Holter ciśnieniowy", price: "150,00 zł" },
-  { name: "Wykonanie EKG", price: "50,00 zł" },
+  {
+    name: "Wykonanie EKG",
+    price: "50,00 zł",
+    confirmation:
+      "rodzaj badania. Cennik przychodni podaje zwykłe EKG za 50 zł, a podsumowanie audytu opisuje tę pozycję jako Holter EKG. Cena Holtera EKG nie jest potwierdzona.",
+  },
   { name: "Sporządzanie drugiej kopii dokumentacji medycznej (za stronę)", price: "0,50 zł" },
 ];
 
@@ -337,4 +344,10 @@ export const ePrescription = {
   title: "Zamów receptę",
   body: "Pacjenci ARSMEDICA mają możliwość korzystania z nowoczesnego rozwiązania, jakim jest e-recepta. Umożliwia ono zamawianie recepty na przepisane przez lekarza leki bez konieczności wizyty w przychodni. Zamówione na portalu e-recepty można zrealizować w dowolnej aptece na podstawie otrzymanego SMS-a z odpowiednim kodem umożliwiającym odbiór leków. Usługa skierowana jest do pacjentów, którzy przyjmują leki stosowane w leczeniu chorób przewlekłych.",
   note: "W celu otrzymania e-recepty prosimy o podanie aktualnego numeru telefonu oraz adresu e-mail.",
+  requirements: [
+    "Formularz przychodni wymaga imienia i nazwiska, numeru PESEL, aktualnego telefonu oraz wybranego terminu odbioru recepty. Opis usługi prosi też o aktualny e-mail, choć pole e-mail nie jest oznaczone jako obowiązkowe.",
+    "Dla każdego leku podaj nazwę, formę, ilość substancji czynnej, ilość leku w opakowaniu oraz liczbę opakowań od 1 do 5.",
+    "Potwierdź, że obecnie nie przebywasz w szpitalu, sanatorium, na rehabilitacji dziennej ani w zakładzie opiekuńczo-leczniczym.",
+    "Formularz wymaga zgody na przetwarzanie danych osobowych w celu realizacji e-recepty.",
+  ],
 };
