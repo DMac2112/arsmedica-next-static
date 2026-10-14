@@ -5,6 +5,11 @@ import { patientTasks, practice } from "@/content/arsmedica";
 export function Header() {
   return (
     <header className="site-header">
+      <div className="container-page">
+        <a href="https://dmac2112.github.io/medica/" className="showcase-link">
+          ← Wszystkie wersje Arsmedica
+        </a>
+      </div>
       <div className="container-page header-brand-row">
         <Link to="/" className="brand-link" aria-label="ARSMEDICA — strona główna">
           <span className="font-serif text-2xl text-primary">{practice.name}</span>

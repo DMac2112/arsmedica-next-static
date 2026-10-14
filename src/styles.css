@@ -151,6 +151,18 @@
   background: var(--surface);
   border-top: 5px solid var(--primary);
 }
+.showcase-link {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 44px;
+  color: var(--muted-foreground);
+  font-size: 16px;
+  line-height: 1.4;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .header-brand-row {
   display: flex;
   justify-content: space-between;
