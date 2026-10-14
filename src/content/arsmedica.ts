@@ -334,8 +334,6 @@ export const priceList: { name: string; price: string; confirmation?: string }[]
   {
     name: "Wykonanie EKG",
     price: "50,00 zł",
-    confirmation:
-      "rodzaj badania. Cennik przychodni podaje zwykłe EKG za 50 zł, a podsumowanie audytu opisuje tę pozycję jako Holter EKG. Cena Holtera EKG nie jest potwierdzona.",
   },
   { name: "Sporządzanie drugiej kopii dokumentacji medycznej (za stronę)", price: "0,50 zł" },
 ];
